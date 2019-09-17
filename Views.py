@@ -6,7 +6,10 @@ from .models import Like# To import tables from models
 
 # Create your views here.
 def firstpage(req):
-    return render(req,'firstpage.html')
+    cur = connection.cursor()
+    cur.execute('''select count( distinct sess_response) as counts from Webapphomepage_like''')
+    Rec1 = cur.fetchone()[0]
+    return render(req,'firstpage.html',{"message": Rec1})
 
 
 def like_request(request):
@@ -19,7 +22,5 @@ def like_request(request):
     cur = connection.cursor()
     cur.execute('''select count( distinct sess_response) as counts from Webapphomepage_like''')
     Rec = cur.fetchone()[0]#For First location of RawQueryset
-
     # Rec = Like.objects.all().count()--- just to count all values of table like select count(*) from table
     return render(request,'firstpage.html',{"message": Rec})
-
