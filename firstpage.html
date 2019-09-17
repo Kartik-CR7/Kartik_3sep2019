@@ -62,12 +62,14 @@ body {
 
 /* Header/Blog Title */
 .header {
-  padding: 80px;
+   padding: 80px;
   text-align: center;
   background: white;
-    margin-top: auto;
-    font-family: "Curlz MT";
-    font-weight: bold;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNTbUXVcVMc1AuhAoNww7FbD29THppXPnYuSnrZnGZv845VTp1xA");
+  background-position: center;
+  margin-top: auto;
+  font-family: "Curlz MT";
+  font-weight: bold;
 }
 
 .header h1 {
@@ -180,7 +182,7 @@ body {
 
 .leftcolumn {
   float: left;
-  width: 75%;
+  width: 100%;
 }
 
 .fakeimg {
@@ -297,8 +299,8 @@ body {
 </head>
 <body>
 <div class="header">
-  <h1>Milieshankhdhar</h1>
-  <p>Live. Love. Celebrate</p>
+  <h1 style="color: white">Milieshankhdhar</h1>
+  <p style="color: white">Live. Love. Celebrate</p>
 </div>
 
 <div id="mySidebar" class="sidebar">
@@ -356,19 +358,16 @@ function closeNav() {
 {#			</td>#}
       <td>
       <div class="imgContainer">
-				<div>
-					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPy7ZnI46zizXRVoXLbV4Gl6LamFU6g5pqtJj1ijxnO8i-gJWp" width="100px" height="100px"/>
+          <img src="https://ci6.googleusercontent.com/proxy/1lZ0RjovWw9NOH5ujZ6Y8tqzYx0lmBnu7ny32MU9W7YWZH0ltv5DjTWRjhHYfyyk_Z13OtzvtKA2AJWEt_flhstMKErJny-gm6DVpdkE2lOhIKICs1LU8F0ps8j_D4sDCnBIGFpIE9g3UoXgtYJGeyrLrBenXiFF0N1S6iWpcjuDC-M3oSiQrvwumD_MlOvZlZjUzSGTdVW2U2JCP-iqLWkJQcdJREa4P6TZCxc8j4J4SPMJeRIXD9MSvQGvcqqfTcNZjApQF4HtNEuJBSwyFs7RFZDha5UH8YHpZgVjhsLcFULl1LxaHaM29ExkiTf6ezaWyIdosBqsnG_mC_Ea2KksycCqk2z8njm06mvuZHGb6w=s0-d-e1-ft#https://instagram.fdel7-1.fna.fbcdn.net/v/t51.2885-15/e35/37075829_192149658316206_2496955773846814720_n.jpg?_nc_ht=instagram.fdel7-1.fna.fbcdn.net&se=7&oh=b4d11af7408ea94391d963465f3132cc&oe=5DFAB286&ig_cache_key=MTgzMjY5Nzg5MzE3ODgwODgyOQ==.2-w1080h809"style="max-width: 100%"/>
 				</div>
 				<div class="imgButton">
                     <form action="/like/" method= "GET">
                         {%csrf_token%}
 			<input type="submit" value="like">
             </form>
-<h3 align = "center">
-        <font face = "chiller">
-        {{message}}
-            </font>
-    </h3>
+            <div>
+                <p2>{{message}} Likes</p2>
+            </div>
 				</div>
          </div>
 			</td>
