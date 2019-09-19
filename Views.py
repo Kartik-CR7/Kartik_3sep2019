@@ -6,7 +6,8 @@ from .models import Like # To import tables from models
 from .models import BT_Contact
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
-
+import json
+from django.http import JsonResponse
 # Create your views here.
 def firstpage(req):
     cur = connection.cursor()
@@ -26,7 +27,11 @@ def like_request(request):
     cur.execute('''select count( distinct sess_response) as counts from Webapphomepage_like''')
     Rec = cur.fetchone()[0]#For First location of RawQueryset
     # Rec = Like.objects.all().count()--- just to count all values of table like select count(*) from table
-    return render(request,'firstpage.html',{"message": Rec})
+    print  (Rec)
+    return JsonResponse({"message": Rec})
+
+    #return jsonify({"message": Rec})
+    # return render(request,'firstpage.html',{"message": Rec})
 
 
 def ContactUsPage(request):
