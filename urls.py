@@ -20,5 +20,7 @@ from Webapphomepage import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.firstpage),
-    path('like/',views.like_request)
+    path('like/',views.like_request),
+    path('ContactU/',views.ContactUsPage),
+    path('ContactUSubmit/',views.ContactUsSubmit)
 ]
