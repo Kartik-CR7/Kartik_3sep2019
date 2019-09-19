@@ -1,0 +1,21 @@
+<div class="container">
+  <form action="/new/" method  ="post">
+      {%csrf_token%}
+
+    <label for="First_Name">First Name</label>
+    <input type="text" name="First_Name" placeholder="Your first name..">
+      <label for="Last_Name">Last Name</label>
+    <input type="text" name="Last_Name" placeholder="Your last name..">
+      <label for="Emailid">EmailId</label>
+      <input type="text" name="Emailid" placeholder="Your Emailid..">
+    <input type="submit" value="Submit">
+
+  </form>
+    <h3 align = "center">
+        <font face = "chiller">
+        {{message}}
+            </font>
+    </h3>
+</div>
+
+
