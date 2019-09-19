@@ -5,12 +5,53 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <head>
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
       <meta charset="utf-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<style>
+<script>
+
+   function likeCount()
+   {
+     var token = '{{csrf_token}}';
+
+        $.ajax({
+    type: 'POST',
+    url: '',
+             headers: { "X-CSRFToken": token },
+            contentType: "application/json",
+    dataType: 'json',
+    success: function(data) {
+
+        document.getElementById("likeshit").innerHTML=data.message+" "+"Likes";
+
+        },
+
+});
+   }
+
+    function saveLike()
+    {var token = '{{csrf_token}}';
+
+        $.ajax({
+    type: 'POST',
+    url: '/like/',
+             headers: { "X-CSRFToken": token },
+            contentType: "application/json",
+    dataType: 'json',
+    success: function(data) {
+
+        document.getElementById("likeshit").innerHTML=data.message+" "+"Likes";
+
+        },
+
+});
+    }
+
+    </script>
+
+    <style>
 * {
   box-sizing: border-box;
 }
@@ -361,12 +402,11 @@ function closeNav() {
           <img src="https://ci6.googleusercontent.com/proxy/1lZ0RjovWw9NOH5ujZ6Y8tqzYx0lmBnu7ny32MU9W7YWZH0ltv5DjTWRjhHYfyyk_Z13OtzvtKA2AJWEt_flhstMKErJny-gm6DVpdkE2lOhIKICs1LU8F0ps8j_D4sDCnBIGFpIE9g3UoXgtYJGeyrLrBenXiFF0N1S6iWpcjuDC-M3oSiQrvwumD_MlOvZlZjUzSGTdVW2U2JCP-iqLWkJQcdJREa4P6TZCxc8j4J4SPMJeRIXD9MSvQGvcqqfTcNZjApQF4HtNEuJBSwyFs7RFZDha5UH8YHpZgVjhsLcFULl1LxaHaM29ExkiTf6ezaWyIdosBqsnG_mC_Ea2KksycCqk2z8njm06mvuZHGb6w=s0-d-e1-ft#https://instagram.fdel7-1.fna.fbcdn.net/v/t51.2885-15/e35/37075829_192149658316206_2496955773846814720_n.jpg?_nc_ht=instagram.fdel7-1.fna.fbcdn.net&se=7&oh=b4d11af7408ea94391d963465f3132cc&oe=5DFAB286&ig_cache_key=MTgzMjY5Nzg5MzE3ODgwODgyOQ==.2-w1080h809"style="max-width: 100%"/>
 				</div>
 				<div class="imgButton">
-                    <form action="/like/" method= "GET">
-                        {%csrf_token%}
-			<input type="submit" value="like">
-            </form>
+{#                        {%csrf_token%}#}
+			<input type="button" value="like" onclick="javascript:saveLike();"/>
+
             <div>
-                <p2>{{message}} Likes</p2>
+                <p2> <span id="likeshit">{{message}} Likes</span></p2>
             </div>
 				</div>
          </div>
