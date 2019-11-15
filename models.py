@@ -10,5 +10,5 @@ class BT_Contact(models.Model):
     First_Name =  models.CharField(max_length = 50,default='Default_name')
     Last_Name = models.CharField(max_length = 50,default= 'Default_lastname')
     Emailid = models.CharField(max_length= 100 ,default='Default@email.com')
-    Message = models.CharField(max_length= 600 ,default= 'No_Message')
+    Message = models.CharField(max_length= 800 ,default= 'No_Message')
 
