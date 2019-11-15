@@ -1,4 +1,4 @@
-"""MilieBlog URL Configuration
+"""MIlieProject URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -15,12 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Webapphomepage import views
-
+from MilieWebapp import views
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.firstpage),
     path('like/',views.like_request),
     path('ContactU/',views.ContactUsPage),
     path('ContactUSubmit/',views.ContactUsSubmit)
-]
+    ]
+# ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

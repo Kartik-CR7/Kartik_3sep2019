@@ -1,9 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 {% load staticfiles %}
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cllikeoudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
       <meta charset="utf-8">
@@ -102,23 +103,7 @@ body {
 }
 
 /* Header/Blog Title */
-.header {
-   padding: 80px;
-  text-align: center;
-  background: white;
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNTbUXVcVMc1AuhAoNww7FbD29THppXPnYuSnrZnGZv845VTp1xA");
-  background-position: center;
-  margin-top: auto;
-  font-family: "Curlz MT";
-  font-weight: bold;
-}
 
-.header h1 {
-  font-size: 40px;
-  font-family: cursive ;
-  font-weight: bolder;
-  -moz-text-size-adjust: auto;
-}
 
 .icon-bar {
   position: inherit;
@@ -236,7 +221,13 @@ body {
 .card {
   background-color: white;
   padding: 20px;
-  margin-top: 20px;
+  margin-top:0px;
+  border: none;
+}
+.card1 {
+  background-color: white;
+  padding: 20px;
+  margin-top:0px;
 }
 
 /* Clear floats after the columns */
@@ -318,11 +309,13 @@ body {
 
 .openbtn:hover {
   background-color: #444;
+
 }
 
 #main {
-  transition: margin-left .5s;
-  padding: 16px;
+  {#transition: margin-left .1s;#}
+  {#padding: 10px;#}
+    background-color: white;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
@@ -333,16 +326,32 @@ body {
 .footer{
     background-color: black;
 }
+.headerh2{
+ text-align: center;
+}
 .imgButton{
   text-align: left;
+}
+  .button {
+background-color: #818181;
+color: black;
+font-size: 16px;
+padding: 5px 20px;
+border-radius: 5px;
+border: 0px;
 }
 </style>
 </head>
 <body>
-<div class="header">
-  <h1 style="color: white">Milieshankhdhar</h1>
-  <p style="color: white">Live. Love. Celebrate</p>
+
+{#<div class="header">#}
+<div class="row">
+<div class="leftcolumn">
+<div style="background: white; margin: 0;" class="card1">
+    <img src="{% static 'MilieWebapp/Images/Milieshankdhar_homeimage.jpg'%}" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto; margin-top: 1px ">
 </div>
+    </div>
+    </div>
 
 <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
@@ -360,11 +369,13 @@ body {
 </ul>
   <a href="/ContactU/">Contact Me</a>
 </div>
-
+<div class="row">
+<div class="leftcolumn">
 <div id="main">
   <button class="openbtn" onclick="openNav()">? MyBlogMenu</button>
 </div>
-
+</div>
+</div>
 <script>
 
     {#alert("sjhfjgsd");#}
@@ -382,8 +393,7 @@ function closeNav() {
 <div class="row">
   <div class="leftcolumn">
     <div class="card">
-      <h2>TITLE HEADING</h2>
-      <h5>Title description, Dec 7, 2017</h5>
+    <h2 class="headerh2">--Visit to Char Dukan--</h2>
       <table>
 		<tr>
 {#			<td>#}
@@ -399,12 +409,25 @@ function closeNav() {
 {#			</td>#}
       <td>
       <div class="imgContainer">
-          <img src="https://ci6.googleusercontent.com/proxy/1lZ0RjovWw9NOH5ujZ6Y8tqzYx0lmBnu7ny32MU9W7YWZH0ltv5DjTWRjhHYfyyk_Z13OtzvtKA2AJWEt_flhstMKErJny-gm6DVpdkE2lOhIKICs1LU8F0ps8j_D4sDCnBIGFpIE9g3UoXgtYJGeyrLrBenXiFF0N1S6iWpcjuDC-M3oSiQrvwumD_MlOvZlZjUzSGTdVW2U2JCP-iqLWkJQcdJREa4P6TZCxc8j4J4SPMJeRIXD9MSvQGvcqqfTcNZjApQF4HtNEuJBSwyFs7RFZDha5UH8YHpZgVjhsLcFULl1LxaHaM29ExkiTf6ezaWyIdosBqsnG_mC_Ea2KksycCqk2z8njm06mvuZHGb6w=s0-d-e1-ft#https://instagram.fdel7-1.fna.fbcdn.net/v/t51.2885-15/e35/37075829_192149658316206_2496955773846814720_n.jpg?_nc_ht=instagram.fdel7-1.fna.fbcdn.net&se=7&oh=b4d11af7408ea94391d963465f3132cc&oe=5DFAB286&ig_cache_key=MTgzMjY5Nzg5MzE3ODgwODgyOQ==.2-w1080h809"style="max-width: 100%"/>
+          <img src="https://ci4.googleusercontent.com/proxy/v4uZTAMZLaOrxRx-Gbe_rOmwP5tcEGX2RMS80yQCJAVCr6FvpDgAk2EdNJiW5gg6VUJ2NkFjG0xOOdB1dLWL3vbC0ePQxB4FR4JNB8YMXN77LteI3eiYAie5HrBTNY1-UQh3DXJKlrR0yMiTc6Ata96LvLgRPpd6geCF9dG5vLwu37bwHI4DSsWnGvHeDir4UaYgZg5RjOil6g29y4EzE01B2O6LQWmRejXfsVpcEqb4sbtYrf-TmV3biGrr2bYNZGWRE1jM9EZx94Oah-JHsQ6pdaX3K1okmAteJLVEElxdQvqQbmjInDXPB49iBF1Rd9VAdHnCakMlMlOYQ4Eg6U8It5NtIfJOOdCg1KUH921OUJNiyynaSiUYPc9ydg=s0-d-e1-ft#https://instagram.fdel14-1.fna.fbcdn.net/vp/1006a1bc1d565a85b34fc9dd1988b7d1/5E5D8BCB/t51.2885-15/e35/s480x480/58873506_2483720408516187_997732301542300808_n.jpg?_nc_ht=instagram.fdel14-1.fna.fbcdn.net&_nc_cat=103&ig_cache_key=MjA0MDg1NjMwMjc1ODIyNzM0MA==.2-w480h385"style="max-width: 100%"/>
 				</div>
 				<div class="imgButton">
 {#                        {%csrf_token%}#}
-			<input type="button" value="like" onclick="javascript:saveLike();"/>
-
+			<input type="button" id = "button1" class = "button" value="like" onclick="javascript:saveLike(); colorChange();"/>
+                    <script>
+                        function  colorChange() {
+                            {#var bcknd_var = {'a'}#}
+        var button = document.getElementById('button1').style.backgroundColor;
+        var color = ''
+        if (button !== 'blue' ) {
+            color = 'blue';
+        document.getElementById('button1').style.backgroundColor = color;
+        }
+        else if (button === 'blue') {
+        color = 'grey';
+        document.getElementById('button1').style.backgroundColor = color;
+        }}
+                        </script>
             <div>
                 <p2> <span id="likeshit">{{message}} Likes</span></p2>
             </div>
@@ -436,9 +459,9 @@ function closeNav() {
 
                         <h5 class="mb-4 font-weight-bold" style="text-align: center" >CONNECT WITH US :</h5>
 						<ul class="social-pet mt-4" style="text-align: center">
-                            <li><a href="#" title="instagram"><i class="fab fa-instagram" ></i></a></li>
+                            <li><a href="https://www.instagram.com/milieshankhdhar/" title="instagram"><i class="fab fa-instagram" ></i></a></li>
                             <li><a href="#" title="google-plus"><i class="fab fa-google-plus-g"></i></a></li>
-							<li><a href="https://www.google.com/" title="facebook"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="https://www.facebook.com/milie.shankhdhar.9" title="facebook"><i class="fab fa-facebook-f"></i></a></li>
 						</ul>
 			</div>
 		<!-- Copyright -->
@@ -447,7 +470,7 @@ function closeNav() {
 				<div class="row">
 					<div class="col-md-12 ">
 						<div class="text-center text-white">
-							&copy; 2018 Your Blog. All Rights Reserved.
+							&copy; 2019 My Blog. All Rights Reserved.
 						</div>
 					</div>
 				</div>

@@ -6,14 +6,26 @@ from .models import Like # To import tables from models
 from .models import BT_Contact
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
-import json
 from django.http import JsonResponse
+from django.conf import settings
 # Create your views here.
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
 def firstpage(req):
+    host_name = socket.gethostname()
+    host_ip = socket.gethostbyname(host_name)
     cur = connection.cursor()
-    cur.execute('''select count( distinct sess_response) as counts from Webapphomepage_like''')
+    cur.execute("select distinct case when (count(1) over(partition by sess_response))% 2 <> 0 then (select count(distinct sess_response) from MilieWebapp_like) when (count(1) over(partition by sess_response))% 2 = 0 then (select count(distinct sess_response) from MilieWebapp_like)-1 else 0 end as Result from MilieWebapp_like where sess_response ='" + host_ip + "'")
     Rec1 = cur.fetchone()[0]
-    return render(req,'firstpage.html',{"message": Rec1})
+    # if Rec1 is None :
+    #     Rec1 = 0
+    # else :
+    #     Rec1 = cur.fetchone()
+    # cur1 = connection.cursor()
+    # cur1.execute("select distinct case when (count(1) over(partition by sess_response))% 2 <> 0 then 'Y' else 'N' end as Result from MilieWebapp_like where sess_response ='" + host_ip + "'")
+    # FLag_is_liked = cur1.fetchone()[0]
+    return render(req,'MilieWebapp/firstpage.html',{"message": Rec1})
+# ,{"flag": FLag_is_liked}
 
 
 def like_request(request):
@@ -24,12 +36,16 @@ def like_request(request):
     aref.save()# Saving  values to database
     #We can use Raw Query but its better to use cursor query by importing connections
     cur = connection.cursor()
-    cur.execute('''select count( distinct sess_response) as counts from Webapphomepage_like''')
+    cur.execute("select distinct case when (count(1) over(partition by sess_response))% 2 <> 0 then (select count(distinct sess_response) from MilieWebapp_like) when (count(1) over(partition by sess_response))% 2 = 0 then (select count(distinct sess_response) from MilieWebapp_like)-1 else 0 end as Result from MilieWebapp_like where sess_response ='"+ host_ip + "'")
+    # cur.execute("select distinct case when (count(1) over(partition by sess_response))%2<> 0 then (select count(distinct sess_response) from MilieWebapp_like) else (select count(distinct sess_response) from MilieWebapp_like)- 1 end from MilieWebapp_like  where sess_response ="+str(host_ip))
     Rec = cur.fetchone()[0]#For First location of RawQueryset
     # Rec = Like.objects.all().count()--- just to count all values of table like select count(*) from table
-    print  (Rec)
+    print (Rec)
+    # cur1 = connection.cursor()
+    # cur1.execute("select distinct case when (count(1) over(partition by sess_response))% 2 <> 0 then 'Y' else 'N' end as Result from MilieWebapp_like where sess_response ='" + host_ip + "'")
+    # FLag_is_liked = cur1.fetchone()[0]
     return JsonResponse({"message": Rec})
-
+    # , {"Flag": FLag_is_liked}
     #return jsonify({"message": Rec})
     # return render(request,'firstpage.html',{"message": Rec})
 
@@ -39,7 +55,6 @@ def ContactUsPage(request):
 
 
 def ContactUsSubmit(request):
-    to = 'anshulkant02415@gmail.com'
     Contact_id = request.POST.get("idno")
     FirstName = request.POST.get("First_Name")
     LastName = request.POST.get("Last_Name")
@@ -47,7 +62,11 @@ def ContactUsSubmit(request):
     Message = request.POST.get("Message")
     aref = BT_Contact(Contact_id=Contact_id, First_Name=FirstName, Last_Name=LastName, Emailid=Emailid, Message=Message)
     aref.save()
-    email = EmailMessage((FirstName+'- Email_ID:'+Emailid),Message,Emailid,[to])
+    to = Emailid
+    # try:
+    # validate_email(Emailid)
+    # return (request, 'ContactU.html', {"Alert": "Email Is Correct"})
+    email = EmailMessage((FirstName+' '+LastName+'- Email_ID:'+ Emailid),Message,'DONOTREPLY <sharmakartik717@gmail.com>',[to])
     email.send()
     return render(request, 'ContactU.html', {"message": "Thanks for your valuable feedback/Interest!"})
     # send_mail(FirstName, Message, Emailid, ['sharmakartik717@gmail.com'])
