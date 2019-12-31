@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from MilieWebapp import views
+from mydemoapp import views
 from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
@@ -23,6 +23,8 @@ urlpatterns = [
     path('',views.firstpage),
     path('like/',views.like_request),
     path('ContactU/',views.ContactUsPage),
-    path('ContactUSubmit/',views.ContactUsSubmit)
-    ]
-# ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('ContactUSubmit/',views.ContactUsSubmit),
+    path('Travel/',views.TravelPage),
+    path('TravelImageUpload/',views.TravelImagePost),
+    path('TravelImagePagerefresh/',views.TravelImageRefresh),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
