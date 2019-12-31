@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
 * {
   box-sizing: border-box;
@@ -71,7 +72,7 @@ input[type=submit]:hover {
 <body>
 
 <h2>Contact Us</h2>
-<p>Please provide your details incase we need to follow up with you or if you need any information likewise.</p>
+<p2>Please provide your details incase we need to follow up with you or if you need any information likewise.</p2>
 
 <div class="container">
   <form action="/ContactUSubmit/" method = "post">
@@ -81,7 +82,7 @@ input[type=submit]:hover {
         <label for="First_Name">First Name</label>
       </div>
       <div class="col-75">
-        <input type="text" id="First_Name" name="First_Name" placeholder="Your First name.." required>
+        <input type="text" id="First_Name" name="First_Name" value="" placeholder="Your First name.." required>
       </div>
     </div>
     <div class="row">
@@ -89,7 +90,7 @@ input[type=submit]:hover {
         <label for="Last_Name">Last Name</label>
       </div>
       <div class="col-75">
-        <input type="text" id="Last_Name" name="Last_Name" placeholder="Your last name.." required>
+        <input type="text" id="Last_Name" name="Last_Name" value="" placeholder="Your last name.." required>
       </div>
     </div>
     <div class="row">
@@ -97,14 +98,14 @@ input[type=submit]:hover {
         <label for="Emailid">Email</label>
       </div>
       <div class="col-75">
-        <input type="text" id="Emailid" name="Emailid" placeholder="Your Emailid.." required>
+        <input type="text" id="Emailidval" name="Emailid"  placeholder="Your Email id.." required>
       </div>
     </div>  <div class="row">
       <div class="col-25">
         <label for="Message">Message</label>
       </div>
       <div class="col-75">
-        <textarea id="Message" name="Message" placeholder="Write something.." style="height:200px" required></textarea>
+        <textarea id="Messagecode" maxlength="800" name="Message" class="text" value= "" placeholder="Write something(Upto 800 Characters).." style="height:200px" required></textarea>
       </div>
     </div>
     <div class="row">
@@ -113,10 +114,34 @@ input[type=submit]:hover {
   </form>
 </div>
     <h3 align = "center">
-        <font face="chiller">
         {{message}}
-            </font>
-    </h3>
+            <script>
+                if ("{{message}}"== "Not a valid Email!!"){
+                    EmailFieldColor();
+                    ValueRetain();
+                };
+            function EmailFieldColor() {
+                    ColorChange();
+                }
+             function ValueRetain() {
+                document.getElementById("First_Name").value = "{{First_Name}}";
+                 document.getElementById("Last_Name").value = "{{Last_Name}}";
+                  document.getElementById("Messagecode").innerHTML = "{{Messagecode}}";
+
+             }
+    function  ColorChange() {
+                            {#alert("color change called");#}
+                            {#var bcknd_var = {'a'}#}
+        var Field = document.getElementById('Emailidval').style.backgroundColor;
+        var color = ''
+        if (Field !== 'pink' ) {
+            color = 'pink';
+        document.getElementById('Emailidval').style.backgroundColor = color;
+        }
+        }
+
+        </script>
+        </h3>
 </div>
 </body>
 </html>
